@@ -261,6 +261,21 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log(`🔌 Client disconnected: ${socket.id}`);
+    const indexNumber = gameState.socketToStudent.get(socket.id);
+    if (indexNumber) {
+      const student = gameState.students.get(indexNumber);
+      // Remove student from waiting queue if they leave or close the webpage
+      if (student && student.status === 'QUEUED') {
+        gameState.students.delete(indexNumber);
+        console.log(`🗑️ Removed disconnected student from queue: ${student.name} (${indexNumber})`);
+      }
+      gameState.socketToStudent.delete(socket.id);
+
+      io.emit('queue:updated', {
+        studentsCount: gameState.students.size,
+        students: getPublicStudentsList()
+      });
+    }
   });
 });
 
