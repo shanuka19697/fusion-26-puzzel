@@ -98,6 +98,14 @@ io.on('connection', (socket) => {
     const formattedIndex = cleanIndex.toUpperCase();
 
     let student = gameState.students.get(formattedIndex);
+    if (student && student.socketId && student.socketId !== socket.id) {
+      // Invalidate previous socket session for this index number
+      io.to(student.socketId).emit('session:invalidated', {
+        message: 'Your index number was logged in from another device or tab.'
+      });
+      gameState.socketToStudent.delete(student.socketId);
+    }
+
     if (!student) {
       student = {
         id: socket.id,
@@ -210,29 +218,22 @@ io.on('connection', (socket) => {
     });
   });
 
-  socket.on('admin:reset_game', ({ clearQueue = false } = {}) => {
+  socket.on('admin:reset_game', () => {
     gameState.status = 'LOBBY';
     gameState.gameStartTime = null;
     gameState.gameEndTime = null;
 
-    if (clearQueue) {
-      gameState.students.clear();
-      gameState.socketToStudent.clear();
-    } else {
-      gameState.students.forEach(s => {
-        s.status = 'QUEUED';
-        s.solveTime = null;
-        s.moves = 0;
-        s.mcqScore = 0;
-        s.completedAt = null;
-      });
-    }
+    // Reset queue and all student sessions so all devices log out to registration
+    gameState.students.clear();
+    gameState.socketToStudent.clear();
+
+    console.log(`🔄 GAME RESET by Admin! All student sessions cleared.`);
 
     io.emit('game:reset', {
       status: 'LOBBY',
       config: gameState.config,
-      studentsCount: gameState.students.size,
-      students: getPublicStudentsList()
+      studentsCount: 0,
+      students: []
     });
   });
 

@@ -45,14 +45,19 @@ export default function StudentApp() {
     };
 
     const handleGameReset = () => {
+      setStudent(null);
       setStudentResult(null);
       setPuzzleData(null);
-      if (student) {
-        setStudent((prev) => prev ? { ...prev, status: 'QUEUED' } : null);
-        setStage('QUEUED');
-      } else {
-        setStage('REGISTER');
-      }
+      setStage('REGISTER');
+      try {
+        sessionStorage.clear();
+        localStorage.clear();
+      } catch (e) {}
+    };
+
+    const handleSessionInvalidated = (data) => {
+      alert(data?.message || 'Your index number was logged in from another device.');
+      handleGameReset();
     };
 
     const handleGameEnded = () => {
@@ -62,12 +67,14 @@ export default function StudentApp() {
     socket.on('register:response', handleRegisterResponse);
     socket.on('submit:response', handleSubmissionResponse);
     socket.on('game:reset', handleGameReset);
+    socket.on('session:invalidated', handleSessionInvalidated);
     socket.on('game:ended', handleGameEnded);
 
     return () => {
       socket.off('register:response', handleRegisterResponse);
       socket.off('submit:response', handleSubmissionResponse);
       socket.off('game:reset', handleGameReset);
+      socket.off('session:invalidated', handleSessionInvalidated);
       socket.off('game:ended', handleGameEnded);
     };
   }, [socket, student]);
