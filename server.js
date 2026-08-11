@@ -13,7 +13,11 @@ const io = new Server(httpServer, {
   cors: {
     origin: '*',
     methods: ['GET', 'POST']
-  }
+  },
+  transports: ['websocket', 'polling'],
+  pingInterval: 5000,
+  pingTimeout: 10000,
+  perMessageDeflate: false
 });
 
 const PORT = process.env.PORT || 3000;

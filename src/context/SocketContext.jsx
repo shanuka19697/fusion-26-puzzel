@@ -22,8 +22,10 @@ export const SocketProvider = ({ children }) => {
   useEffect(() => {
     // Automatically connect to current origin host
     const socketInstance = io(window.location.origin, {
-      reconnectionAttempts: 10,
-      reconnectionDelay: 1000
+      transports: ['websocket', 'polling'],
+      reconnectionAttempts: 15,
+      reconnectionDelay: 500,
+      upgrade: true
     });
 
     socketInstance.on('connect', () => {
