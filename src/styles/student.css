@@ -1,0 +1,332 @@
+/* Student View Mobile App Layout */
+.student-container {
+  max-width: 500px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Header Component */
+.brand-header {
+  text-align: center;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  color: #c084fc;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.brand-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+/* Registration Form Card */
+.register-card {
+  width: 100%;
+  padding: 28px 24px;
+  margin-top: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.input-field:focus {
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.input-field::placeholder {
+  color: #64748b;
+  font-weight: 400;
+}
+
+.form-hint {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.error-alert {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Waiting Radar Lobby */
+.radar-lobby {
+  width: 100%;
+  padding: 32px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.radar-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(6, 182, 212, 0.05) 70%);
+  border: 2px solid rgba(139, 92, 246, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+.radar-wave {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(6, 182, 212, 0.5);
+  animation: radarPing 2.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes radarPing {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.queue-badge-pill {
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  color: #38bdf8;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+/* Puzzle Canvas View */
+.puzzle-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.puzzle-hud {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 18px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.hud-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.puzzle-grid-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 440px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 3px solid rgba(139, 92, 246, 0.5);
+  border-radius: 16px;
+  padding: 6px;
+  display: grid;
+  gap: 4px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  touch-action: manipulation;
+}
+
+.puzzle-tile {
+  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.puzzle-tile:hover {
+  border-color: #38bdf8;
+  transform: scale(0.98);
+}
+
+.puzzle-tile.slideable {
+  border-color: #06b6d4 !important;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+}
+
+.puzzle-tile.slideable:hover {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.7);
+  transform: scale(0.96);
+}
+
+.puzzle-tile.empty-slot {
+  cursor: default;
+}
+
+.tile-number-badge {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: rgba(15, 23, 42, 0.75);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+/* Modal Victory Popup */
+.victory-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 13, 22, 0.88);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.victory-card {
+  max-width: 420px;
+  width: 100%;
+  padding: 32px 24px;
+  text-align: center;
+  animation: floatAnim 3s infinite ease-in-out;
+}
+
+/* Mobile Responsiveness Improvements (<480px smartphones) */
+@media (max-width: 480px) {
+  .student-container {
+    padding: 12px 10px;
+  }
+
+  .brand-header {
+    margin-bottom: 16px;
+  }
+
+  .brand-title {
+    font-size: 1.75rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .register-card {
+    padding: 20px 16px;
+  }
+
+  .input-field {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+
+  .btn-primary {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  .puzzle-grid-container {
+    padding: 4px;
+    gap: 3px;
+    border-width: 2px;
+  }
+
+  .tile-number-badge {
+    width: 18px;
+    height: 18px;
+    font-size: 0.65rem;
+    top: 2px;
+    left: 2px;
+  }
+
+  .puzzle-hud {
+    padding: 10px 14px;
+  }
+
+  .hud-item {
+    font-size: 0.95rem;
+  }
+}
+

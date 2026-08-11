@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#4338ca"/>
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fed7aa"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="veilGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.4)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background Landscape -->
+  <rect width="600" height="600" fill="url(#bgGrad)"/>
+  
+  <!-- Glowing Renaissance Halo / Cyberpunk Ambient -->
+  <circle cx="300" cy="220" r="220" fill="url(#glowGrad)"/>
+  
+  <!-- Stylized Mountain & River Landscape Background -->
+  <path d="M 0 380 Q 150 280 300 350 T 600 320 L 600 600 L 0 600 Z" fill="#0f172a" opacity="0.8"/>
+  <path d="M 0 420 Q 200 360 400 450 T 600 400 L 600 600 L 0 600 Z" fill="#1e293b" opacity="0.9"/>
+
+  <!-- Mona Lisa Shoulders & Torso -->
+  <path d="M 120 600 C 140 450, 180 400, 240 390 C 270 385, 330 385, 360 390 C 420 400, 460 450, 480 600 Z" fill="#374151"/>
+  <!-- Dress Pleats & Gold Trim -->
+  <path d="M 230 400 Q 300 440 370 400" fill="none" stroke="url(#goldGrad)" stroke-width="8"/>
+  <path d="M 240 405 L 240 600 M 360 405 L 360 600 M 300 420 L 300 600" stroke="#1f2937" stroke-width="6"/>
+
+  <!-- Hands Folded in Foreground -->
+  <ellipse cx="270" cy="540" rx="60" ry="30" fill="#fdba74"/>
+  <ellipse cx="330" cy="535" rx="65" ry="28" fill="#f97316"/>
+
+  <!-- Veil & Long Dark Hair -->
+  <path d="M 160 220 C 160 120, 440 120, 440 220 C 440 320, 410 450, 390 500 C 370 420, 400 240, 300 240 C 200 240, 230 420, 210 500 C 190 450, 160 320, 160 220 Z" fill="url(#hairGrad)"/>
+
+  <!-- Face Contour -->
+  <path d="M 210 200 C 210 130, 390 130, 390 200 C 390 300, 340 340, 300 340 C 260 340, 210 300, 210 200 Z" fill="url(#skinGrad)"/>
+
+  <!-- Subtle Sheer Veil Top -->
+  <path d="M 205 150 Q 300 130 395 150 Q 300 170 205 150 Z" fill="url(#veilGrad)"/>
+
+  <!-- Forehead & Eyebrows (Enigmatic Soft Brows) -->
+  <path d="M 240 190 Q 265 185 285 190" stroke="#7c2d12" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M 315 190 Q 335 185 360 190" stroke="#7c2d12" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+  <!-- Enigmatic Eyes -->
+  <ellipse cx="260" cy="210" rx="14" ry="8" fill="#ffffff"/>
+  <circle cx="262" cy="210" r="6" fill="#451a03"/>
+  <circle cx="264" cy="208" r="2" fill="#ffffff"/>
+
+  <ellipse cx="340" cy="210" rx="14" ry="8" fill="#ffffff"/>
+  <circle cx="338" cy="210" r="6" fill="#451a03"/>
+  <circle cx="340" cy="208" r="2" fill="#ffffff"/>
+
+  <!-- Nose Structure -->
+  <path d="M 300 210 L 295 255 Q 300 262 308 255" stroke="#ea580c" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Famous Mysterious Smile -->
+  <path d="M 265 285 Q 300 300 335 285" stroke="#991b1b" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M 270 286 Q 300 293 330 286" stroke="#f87171" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  <!-- Arts Club & Fusion '26 Overlay Watermark Badge -->
+  <rect x="30" y="30" width="220" height="48" rx="24" fill="rgba(15, 23, 42, 0.75)" stroke="url(#goldGrad)" stroke-width="2"/>
+  <text x="50" y="60" font-family="'Outfit', 'Inter', sans-serif" font-weight="800" font-size="20" fill="#fbbf24">FUSION '26</text>
+  <text x="160" y="60" font-family="'Outfit', 'Inter', sans-serif" font-weight="600" font-size="14" fill="#a855f7">ARTS</text>
+  
+  <text x="300" y="580" text-anchor="middle" font-family="'Outfit', 'Inter', sans-serif" font-weight="700" font-size="16" fill="rgba(255,255,255,0.7)" letter-spacing="4">FACULTY OF TECHNOLOGY</text>
+</svg>
