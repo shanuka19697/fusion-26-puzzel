@@ -17,7 +17,7 @@ export default function StudentApp() {
 
   const { status, config, studentsCount, students, gameStartTime } = gameState;
 
-  // Handle registration response from socket
+  // Handle registration & submission responses from socket
   useEffect(() => {
     if (!socket) return;
 
@@ -44,16 +44,35 @@ export default function StudentApp() {
       }
     };
 
+    const handleGameReset = () => {
+      setStudentResult(null);
+      setPuzzleData(null);
+      if (student) {
+        setStudent((prev) => prev ? { ...prev, status: 'QUEUED' } : null);
+        setStage('QUEUED');
+      } else {
+        setStage('REGISTER');
+      }
+    };
+
+    const handleGameEnded = () => {
+      setStage('COMPLETED');
+    };
+
     socket.on('register:response', handleRegisterResponse);
     socket.on('submit:response', handleSubmissionResponse);
+    socket.on('game:reset', handleGameReset);
+    socket.on('game:ended', handleGameEnded);
 
     return () => {
       socket.off('register:response', handleRegisterResponse);
       socket.off('submit:response', handleSubmissionResponse);
+      socket.off('game:reset', handleGameReset);
+      socket.off('game:ended', handleGameEnded);
     };
-  }, [socket]);
+  }, [socket, student]);
 
-  // Handle game start trigger from Admin
+  // Handle game start trigger from Admin broadcast
   useEffect(() => {
     if (status === 'PLAYING' && student && stage === 'QUEUED') {
       setStage('PUZZLE');
